@@ -24,7 +24,7 @@ export default function CreativeTemplate({ data = {} }) {
   return (
     <div className="creative-template" data-theme="light">
       <div className="text-3xl gap-3 font-bold creative-text-primary">
-        <h1 className="text-5xl underline text-center">{fullName}</h1>
+        <h1 className="text-5xl underline text-center">{form.fullName.slice(0,1).toUpperCase()+form.fullName.slice(1).toLowerCase()}</h1>
         <div>
           {experience.map((exp, index) => (
             <div key={index} className="mb-6">

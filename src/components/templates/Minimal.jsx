@@ -4,7 +4,7 @@ export default function Minimal({ data }) {
   return (
     <div className="minimal-template">
       <div className="text-5xl text-center underline gap-3 font-bold minimal-h1"> {/* Changed from text-red-600 to hex */}
-          <h1 className="text-5xl gap-3 font-bold minimal-h1">{form.fullName}</h1>
+          <h1 className="text-5xl gap-3 font-bold minimal-h1">{form.fullName.slice(0,1).toUpperCase()+form.fullName.slice(1).toLowerCase()}</h1>
          
         <div>
         {experience.map((exp, index) => (

@@ -23,7 +23,7 @@ export default function Professional({ data = {} }) {
     <div className="professional-template" data-theme="light">
       <header className="professional-header">
         <div className=" text-5xl gap-3 underline font-bold professional-h1-name">
-          <h1>{fullName}</h1>
+          <h1>{form.fullName.slice(0,1).toUpperCase()+form.fullName.slice(1).toLowerCase()}</h1>
         
             {experience.map((exp, index) => (
               <div key={index} className="mb-6">
