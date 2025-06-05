@@ -1,5 +1,5 @@
 // lib/agent/modelClient.ts
-import { ChatMessage, ModelResponse, ModelError } from './types';
+import { ChatMessage, ModelResponse } from './types';
 
 export async function askModel(messages: ChatMessage[]): Promise<ModelResponse> {
   try {

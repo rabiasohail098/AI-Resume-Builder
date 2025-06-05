@@ -26,12 +26,4 @@ export interface AgentResponse {
   suggestion?: string;
   error?: string;
 }
-
-export interface ModelError extends Error {
-  response?: {
-    status: number;
-    data: {
-      error?: string;
-    };
-  };
-}
+// Remove ModelError interface
