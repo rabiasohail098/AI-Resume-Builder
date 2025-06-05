@@ -1,159 +1,3 @@
-// 'use client';
-// import { useRouter } from 'next/navigation';
-// import { useState, useEffect } from 'react';
-// import Head from 'next/head';
-
-// export default function Home() {
-//   const router = useRouter();
-//   const [theme, setTheme] = useState('light');
-
-//   // Set theme on component mount
-//   useEffect(() => {
-//     const savedTheme = localStorage.getItem('resumeTheme') || 'light';
-//     setTheme(savedTheme);
-//     document.documentElement.setAttribute('data-theme', savedTheme);
-//   }, []);
-
-//   // Toggle between light and dark theme
-//   const toggleTheme = () => {
-//     const newTheme = theme === 'light' ? 'dark' : 'light';
-//     setTheme(newTheme);
-//     localStorage.setItem('resumeTheme', newTheme);
-//     document.documentElement.setAttribute('data-theme', newTheme);
-//   };
-
-//   // Resume templates data
-//   const templates = [
-//     {
-//       id: 1,
-//       name: 'Professional',
-//       description: 'Clean and formal design for corporate jobs',
-//       color: 'bg-blue-500'
-//     },
-//     {
-//       id: 2,
-//       name: 'Modern',
-//       description: 'Contemporary design with creative elements',
-//       color: 'bg-purple-500'
-//     },
-//     {
-//       id: 3,
-//       name: 'Minimalist',
-//       description: 'Simple and elegant with maximum readability',
-//       color: 'bg-green-500'
-//     },
-//     {
-//       id: 4,
-//       name: 'Creative',
-//       description: 'For designers and artistic professionals',
-//       color: 'bg-yellow-500'
-//     }
-//   ];
-
-//   return (
-//     <>
-//       <Head>
-//         <title>Professional Resume Builder | Created by Rabia Sohail</title>
-//         <meta name="description" content="Create stunning resumes with our AI-powered builder" />
-//       </Head>
-
-//       <div className={`min-h-screen transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
-//         {/* Navigation */}
-//         <nav className="flex justify-between items-center p-6">
-//           <div className="text-2xl font-bold text-blue-600">ResumeBuilder</div>
-//           <button 
-//             onClick={toggleTheme}
-//             className={`p-2 rounded-full ${theme === 'dark' ? 'bg-gray-700 text-yellow-300' : 'bg-gray-200 text-gray-700'}`}
-//           >
-//             {theme === 'dark' ? '☀️' : '🌙'}
-//           </button>
-//         </nav>
-
-//         {/* Hero Section */}
-//         <section className="container mx-auto px-6 py-16 text-center">
-//           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-//             Create Your <span className="text-blue-600">Perfect Resume</span> in Minutes
-//           </h1>
-//           <p className="text-xl mb-10 max-w-2xl mx-auto">
-//             Our AI-powered resume builder helps you craft a professional resume that stands out to employers.
-//           </p>
-//           <button
-//             onClick={() => router.push('/resume')}
-//             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300"
-//           >
-//             Start Building Now →
-//           </button>
-//         </section>
-
-//         {/* Templates Section */}
-//         <section className={`py-16 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-//           <div className="container mx-auto px-6">
-//             <h2 className="text-3xl font-bold text-center mb-12">Choose a Template</h2>
-//             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-//               {templates.map(template => (
-//                 <div 
-//                   key={template.id}
-//                   className={`rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'}`}
-//                   onClick={() => router.push(`/resume?template=${template.id}`)}
-//                 >
-//                   <div className={`h-40 ${template.color} flex items-center justify-center`}>
-//                     <span className="text-white text-xl font-bold">{template.name}</span>
-//                   </div>
-//                   <div className="p-6">
-//                     <h3 className="font-bold text-xl mb-2">{template.name}</h3>
-//                     <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-//                       {template.description}
-//                     </p>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* Features Section */}
-//         <section className="py-16">
-//           <div className="container mx-auto px-6">
-//             <h2 className="text-3xl font-bold text-center mb-12">Why Choose Our Resume Builder</h2>
-//             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//               <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}>
-//                 <div className="text-blue-600 text-3xl mb-4">⚡</div>
-//                 <h3 className="font-bold text-xl mb-2">Easy to Use</h3>
-//                 <p>Create a professional resume in just 5 minutes with our intuitive builder.</p>
-//               </div>
-//               <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}>
-//                 <div className="text-blue-600 text-3xl mb-4">📄</div>
-//                 <h3 className="font-bold text-xl mb-2">ATS Friendly</h3>
-//                 <p>Optimized to pass through Applicant Tracking Systems used by employers.</p>
-//               </div>
-//               <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}>
-//                 <div className="text-blue-600 text-3xl mb-4">🎨</div>
-//                 <h3 className="font-bold text-xl mb-2">Multiple Designs</h3>
-//                 <p>Choose from various professionally designed templates.</p>
-//               </div>
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* Footer */}
-//         <footer className={`py-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} text-center`}>
-//           <p>
-//             Made with ❤️ by <span className="font-bold text-blue-600">Rabia Sohail</span>
-//           </p>
-//           <p className="mt-2 text-sm">
-//             © {new Date().getFullYear()} Professional Resume Builder. All rights reserved.
-//           </p>
-//         </footer>
-//       </div>
-//     </>
-//   );
-// }
-
-
-
-
-
-
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
@@ -272,17 +116,17 @@ export default function Home() {
           <div className="container">
             <h2 className="section-title">Why Choose Our Resume Builder</h2>
             <div className="features-grid">
-              <div className={`feature-card light-card ${theme === 'dark' ? 'dark-bg' : 'light-bg'}`}>
+              <div className={`feature-card light-card ${theme === 'dark' ? 'dark-card' : 'light-card'}`}>
                 <div className="feature-icon">⚡</div>
                 <h3 className="feature-title">Easy to Use</h3>
                 <p>Create a professional resume in just 5 minutes with our intuitive builder.</p>
               </div>
-              <div className={`feature-card light-card ${theme === 'dark' ? 'dark-bg' : 'light-bg'}`}>
+              <div className={`feature-card light-card ${theme === 'dark' ? 'dark-card' : 'light-card'}`}>
                 <div className="feature-icon">📜</div>
                 <h3 className="feature-title">ATS Friendly</h3>
                 <p>Optimized to pass through Applicant Tracking Systems used by employers.</p>
               </div>
-              <div className={`feature-card light-card ${theme === 'dark' ? 'dark-bg' : 'light-bg'}`}>
+              <div className={`feature-card light-card ${theme === 'dark' ? 'dark-card' : 'light-card'}`}>
                 <div className="feature-icon">🎨</div>
                 <h3 className="feature-title">Multiple Designs</h3>
                 <p>Choose from various professionally designed templates.</p>

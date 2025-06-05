@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 type AgentHelperProps = {
     field: string;
@@ -35,6 +35,18 @@ export default function AgentHelper({ field, context = "", onResult }: AgentHelp
         }
         setLoading(false);
     };
+      const [theme, setTheme] = useState('light')
+    useEffect(() => {
+      const savedTheme = localStorage.getItem('resumeTheme') || 'light';
+      setTheme(savedTheme);
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }, []);
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('resumeTheme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
     return (
         <div className="mt-2">
             <button
@@ -44,7 +56,7 @@ export default function AgentHelper({ field, context = "", onResult }: AgentHelp
             >{loading ? "Thinking..." : "💡 Suggest Answer"}
             </button>
             {suggestion && (
-                <div className="mt-2 p-4 bg-gray-100 border border-gray-300 rounded text-sm  whitespace-pre-wrap shadow">
+                <div className={`${theme === "dark" ? 'form-textarea' :''}`}>
                     {suggestion}
                 </div>
             )}
