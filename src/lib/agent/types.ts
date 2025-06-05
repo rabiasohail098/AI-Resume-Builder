@@ -4,13 +4,17 @@ export interface ChatMessage {
   content: string;
 }
 
+export interface ModelChoice {
+  message: {
+    content: string;
+  };
+}
+
 export interface ModelResponse {
-  choices: {
-    message: {
-      content: string;
-    };
-  }[];
-  error?: string;
+  choices: ModelChoice[];
+  error?: {
+    message: string;
+  };
 }
 
 export interface AgentRequest {
@@ -21,4 +25,13 @@ export interface AgentRequest {
 export interface AgentResponse {
   suggestion?: string;
   error?: string;
+}
+
+export interface ModelError extends Error {
+  response?: {
+    status: number;
+    data: {
+      error?: string;
+    };
+  };
 }
