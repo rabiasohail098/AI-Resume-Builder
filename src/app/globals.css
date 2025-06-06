@@ -266,7 +266,7 @@ body {
   font-size: 3rem;
   font-weight: 800;
   /* Restored original color for h1-main in light theme */
-  color: rgba(252, 50, 27, 0.865); /* This provides the colorful heading */
+  color: #fc321bdd; /* This provides the colorful heading */
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -326,8 +326,21 @@ body {
 
 /* Media Queries for Creative Template Layout */
 @media (max-width: 768px) {
+  .creative-template {
+    padding: 1rem; /* Smaller padding on mobile */
+  }
   .creative-main-grid {
     grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    gap: 1.5rem; /* Slightly smaller gap */
+  }
+  .creative-h1-main {
+    font-size: 2.5rem; /* Adjust font size for mobile */
+  }
+  .creative-h2 {
+    font-size: 1.3rem;
+  }
+  .creative-h3 {
+    font-size: 1.1rem;
   }
 }
 
@@ -349,6 +362,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 /* Creative Template Lists */
@@ -375,6 +389,9 @@ body {
   .creative-projects-grid {
     grid-template-columns: 1fr; /* Single column on very small screens */
   }
+  .creative-project-card {
+    padding: 0.8rem; /* Slightly smaller padding */
+  }
 }
 
 .creative-project-card {
@@ -388,6 +405,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 /* Creative Template Tags */
@@ -432,6 +450,13 @@ body {
   gap: 0.5rem 1rem;
   color: var(--secondary-color);
 }
+@media (max-width: 480px) {
+  .creative-contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem; /* Smaller gap for stacked items */
+  }
+}
 
 /* Creative Template Languages */
 .creative-lang-item {
@@ -459,8 +484,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr; /* Default to single column */
+  display: flex; /* Changed to flex for better control on print */
+  flex-direction: column; /* Stack vertically by default */
 }
 
 /* Modern Template Theme Variables */
@@ -541,12 +566,23 @@ body {
 
 /* Media Queries for Modern Template Layout */
 @media (max-width: 768px) {
+  .modern-template {
+    padding: 1rem; /* Adjust padding for mobile */
+  }
   .modern-container {
     grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    gap: 1.5rem; /* Smaller gap */
   }
   .modern-sidebar {
     padding-bottom: 1rem; /* Adjust padding for stacked layout */
   }
+  /* Adjust font sizes for mobile to keep template compact */
+  .modern-h1 { font-size: 2.5rem; }
+  .modern-h2-main { font-size: 1.3rem; }
+  .modern-h2-sidebar { font-size: 1.1rem; }
+  .modern-h3 { font-size: 1rem; }
+  .modern-p { font-size: 0.9rem; }
+  .modern-text-sm, .modern-text-xs { font-size: 0.8rem; }
 }
 
 .modern-sidebar {
@@ -571,6 +607,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Allow wrapping for better mobile display */
+}
+@media (max-width: 480px) {
+  .modern-flex-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
 }
 
 /* Modern Template Lists */
@@ -594,6 +638,14 @@ body {
 }
 .modern-ul { list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; }
 .modern-li { color: var(--secondary-color); margin-bottom: 0.25rem; font-size: 0.875rem; }
+@media (max-width: 480px) {
+  .modern-ul {
+    padding-left: 1rem; /* Reduce padding for small screens */
+  }
+  .modern-li {
+    font-size: 0.8rem; /* Smaller font size for list items */
+  }
+}
 
 /* Modern Template Links */
 .modern-link {
@@ -617,6 +669,11 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
+}
+@media (max-width: 600px) {
+  .modern-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
 }
 
 /* --- Professional Template --- */
@@ -667,6 +724,16 @@ body {
   margin-bottom: 0.3rem;
 }
 .professional-p { color: var(--secondary-color); margin-bottom: 1rem; font-size: 0.95rem; }
+@media (max-width: 768px) {
+  .professional-template {
+    padding: 1rem; /* Adjust padding for mobile */
+  }
+  .professional-h1-name { font-size: 2rem; }
+  .professional-h1-title { font-size: 1.5rem; }
+  .professional-h2 { font-size: 1.2rem; }
+  .professional-h3 { font-size: 1rem; }
+  .professional-p { font-size: 0.9rem; }
+}
 
 /* Professional Template Layout */
 .professional-header {
@@ -691,6 +758,7 @@ body {
     flex-direction: column; /* Stack contact info on small screens */
     align-items: center;
     gap: 0.5rem;
+    font-size: 0.85rem; /* Smaller font for mobile */
   }
 }
 
@@ -710,6 +778,9 @@ body {
   .professional-skills-list {
     grid-template-columns: 1fr; /* Single column on smaller screens */
   }
+  .professional-skill-item {
+    font-size: 0.85rem; /* Smaller font for mobile */
+  }
 }
 
 .professional-skill-item {
@@ -728,6 +799,14 @@ body {
 
 .professional-responsibilities { list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; }
 .professional-responsibility-item { color: var(--secondary-color); font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 480px) {
+  .professional-responsibilities {
+    padding-left: 1rem; /* Reduce padding for small screens */
+  }
+  .professional-responsibility-item {
+    font-size: 0.85rem; /* Smaller font for list items */
+  }
+}
 
 /* Professional Template Experience & Education Items */
 .professional-experience-item,
@@ -741,14 +820,36 @@ body {
 .professional-date { color: var(--tertiary-color); font-size: 0.9rem; }
 .professional-location,
 .professional-grade { color: var(--tertiary-color); font-size: 0.85rem; }
+@media (max-width: 480px) {
+  .professional-company-info {
+    font-size: 0.9rem;
+  }
+  .professional-date, .professional-location, .professional-grade {
+    font-size: 0.8rem;
+  }
+}
+
 
 /* Professional Template Projects */
 .professional-project-item { margin-bottom: 1.2rem; }
 .professional-project-desc { color: var(--secondary-color); font-size: 0.9rem; margin: 0.3rem 0; }
 .professional-project-tech { color: var(--tertiary-color); font-size: 0.85rem; font-style: italic; }
+@media (max-width: 480px) {
+  .professional-project-desc {
+    font-size: 0.85rem;
+  }
+  .professional-project-tech {
+    font-size: 0.8rem;
+  }
+}
 
 /* Professional Template Certifications */
 .professional-cert-issuer { color: var(--secondary-color); font-size: 0.9rem; }
+@media (max-width: 480px) {
+  .professional-cert-issuer {
+    font-size: 0.85rem;
+  }
+}
 
 /* Professional Template Languages */
 .professional-languages-list {
@@ -762,6 +863,13 @@ body {
   .professional-languages-list {
     flex-direction: column; /* Stack languages on small screens */
     align-items: flex-start;
+    gap: 0.5rem; /* Smaller gap */
+  }
+  .professional-language-item {
+    font-size: 0.9rem;
+  }
+  .professional-language-level {
+    font-size: 0.8rem;
   }
 }
 
@@ -790,6 +898,14 @@ body {
 
 .professional-reference-position { color: var(--secondary-color); font-size: 0.9rem; margin: 0.2rem 0; }
 .professional-reference-contact { color: var(--tertiary-color); font-size: 0.85rem; }
+@media (max-width: 480px) {
+  .professional-reference-position {
+    font-size: 0.85rem;
+  }
+  .professional-reference-contact {
+    font-size: 0.8rem;
+  }
+}
 
 /* Professional Template Links */
 .professional-link { color: var(--link-color); text-decoration: none; }
@@ -802,6 +918,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
+}
+@media (max-width: 480px) {
+  .professional-flex-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
 }
 
 /* --- Minimal Template --- */
@@ -812,6 +936,15 @@ body {
   margin-right: auto;
   font-family: sans-serif;
   transition: color 0.3s ease; /* Ensure theme transition */
+}
+@media (max-width: 768px) {
+  .minimal-template {
+    padding: 1rem; /* Adjust padding for mobile */
+  }
+  .minimal-h1 { font-size: 2rem; }
+  .minimal-h2 { font-size: 1.3rem; }
+  .minimal-h3 { font-size: 1.1rem; }
+  .minimal-p { font-size: 0.9rem; }
 }
 
 /* Minimal Template Typography (Common styles) */
@@ -890,10 +1023,25 @@ body {
     align-items: flex-start;
     gap: 0.5rem;
   }
+  .header-title {
+    font-size: 1.25rem; /* Smaller title on mobile */
+  }
 }
 
 .header-title { font-size: 1.5rem; font-weight: 700; }
 .header-actions { display: flex; gap: 1rem; align-items: center; }
+@media (max-width: 480px) {
+  .header-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .tab-toggle-button, .theme-toggle-button {
+    width: 100%; /* Make buttons full width */
+    text-align: center;
+  }
+}
+
 
 /* Main Content Styles */
 .resume-form-main {
@@ -901,6 +1049,12 @@ body {
   margin: 0 auto;
   padding: 1rem;
 }
+@media (max-width: 600px) {
+  .resume-form-main {
+    padding: 0.5rem; /* Smaller padding on very small screens */
+  }
+}
+
 
 /* Form Container */
 .form-container {
@@ -939,6 +1093,9 @@ body {
   .template-grid {
     grid-template-columns: 1fr; /* Single column on smaller screens */
   }
+  .template-card {
+    padding: 0.8rem; /* Adjust padding for smaller cards */
+  }
 }
 
 .template-card {
@@ -961,6 +1118,12 @@ body {
   flex-direction: column;
   gap: 2rem;
 }
+@media (max-width: 600px) {
+  .form-sections {
+    padding: 1rem; /* Adjust padding */
+    gap: 1.5rem; /* Smaller gap between sections */
+  }
+}
 
 .form-section {
   display: flex;
@@ -972,6 +1135,21 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
+}
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.1rem; /* Smaller title */
+  }
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .add-button {
+    width: 100%; /* Make add button full width */
+    text-align: center;
+  }
 }
 
 /* Form Grid */
@@ -985,18 +1163,25 @@ body {
 @media (max-width: 600px) {
   .form-grid {
     grid-template-columns: 1fr; /* Single column on smaller screens */
+    gap: 0.75rem; /* Smaller gap between fields */
   }
 }
 
 /* Form Fields */
 .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
 .field-label { font-size: 0.875rem; font-weight: 500; }
+@media (max-width: 600px) {
+  .field-label {
+    font-size: 0.8rem; /* Smaller label font */
+  }
+}
 
 .form-input {
   padding: 0.5rem;
   border-radius: 0.25rem;
   width: 100%;
   transition: all 0.3s ease;
+  font-size: 0.9rem; /* Standardize font size for inputs */
 }
 
 /* Light theme input */
@@ -1010,6 +1195,7 @@ body {
   border-radius: 0.25rem;
   width: 100%;
   min-height: 100px;
+  font-size: 0.9rem; /* Standardize font size for textareas */
 }
 
 /* Nested Forms */
@@ -1021,11 +1207,29 @@ body {
   flex-direction: column;
   gap: 1rem;
 }
+@media (max-width: 600px) {
+  .nested-form-container {
+    padding: 0.8rem; /* Smaller padding */
+    gap: 0.75rem; /* Smaller gap */
+  }
+}
 
 .nested-form-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
+}
+@media (max-width: 480px) {
+  .nested-form-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .remove-button {
+    width: 100%; /* Make remove button full width */
+    text-align: left; /* Align text to left */
+  }
 }
 
 .nested-form-title { font-weight: 500; }
@@ -1070,6 +1274,7 @@ body {
   .submit-button, .preview-button {
     width: 100%; /* Full width buttons on small screens */
     text-align: center;
+    padding: 0.75rem 1.5rem; /* Slightly larger padding for easier tapping */
   }
 }
 
@@ -1122,6 +1327,7 @@ body {
   .download-button, .edit-button {
     width: 100%;
     text-align: center;
+    padding: 0.75rem 1.5rem; /* Slightly larger padding for easier tapping */
   }
 }
 
@@ -1195,70 +1401,167 @@ body {
   body {
     background: white !important;
     color: black !important;
-    -webkit-print-color-adjust: exact;
+    -webkit-print-color-adjust: exact; /* Ensure colors print exactly as shown */
     print-color-adjust: exact;
+    margin: 0; /* Remove body margin for print */
+    padding: 0; /* Remove body padding for print */
+    overflow: hidden; /* Prevent scrollbars on print */
   }
 
-  .no-print {
+  /* Hide elements that shouldn't print */
+  .no-print,
+  .resume-form-container, /* Hide the form when printing */
+  .header-actions,
+  .action-buttons,
+  .preview-actions,
+  .theme-toggle-button,
+  .tab-toggle-button,
+  button, /* Hide all buttons during print */
+  input,
+  textarea,
+  select,
+  label /* Form labels can be hidden if they clash with template design */
+  {
     display: none !important;
   }
 
-  /* Professional Template specific print styles */
-  .professional-template {
-    padding: 0.5in;
-    font-size: 11pt;
-    line-height: 1.3;
+  /* Make sure templates take full print width */
+  .creative-template,
+  .modern-template,
+  .professional-template,
+  .minimal-template {
+    width: 100% !important;
+    max-width: none !important; /* Override max-width for printing */
+    padding: 0.75in !important; /* Standard A4 margin for professional look */
+    margin: 0 !important; /* Remove auto margins for printing */
+    box-shadow: none !important; /* Remove shadows */
+    background-color: white !important; /* Ensure white background */
+    color: black !important; /* Ensure black text */
   }
 
-  .professional-template * {
+  /* General template print adjustments */
+  .creative-template *,
+  .modern-template *,
+  .professional-template *,
+  .minimal-template * {
     visibility: visible;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    color: inherit !important; /* Use inherited color to respect black text */
+    background-color: transparent !important; /* No background colors */
+    box-shadow: none !important; /* Remove shadows */
+    border-color: #ccc !important; /* Light borders for distinction */
   }
 
-  .professional-print-section {
-    display: block !important;
+  /* Headings, paragraphs and list items font sizes for print */
+  .creative-h1, .creative-h1-main, .modern-h1, .professional-h1-name, .minimal-h1 {
+    font-size: 20pt !important;
+    margin-bottom: 0.25in !important;
+  }
+  .creative-h2, .modern-h2-main, .modern-h2-sidebar, .professional-h2, .minimal-h2 {
+    font-size: 14pt !important;
+    margin-top: 0.2in !important;
+    margin-bottom: 0.1in !important;
+    border-bottom: 1px solid #ccc !important; /* Lighter border for print */
+    padding-bottom: 0.1in !important;
+  }
+  .creative-h3, .modern-h3, .modern-h3-sidebar, .professional-h3, .minimal-h3 {
+    font-size: 12pt !important;
+    margin-bottom: 0.1in !important;
+  }
+  .creative-p, .modern-p, .modern-p-secondary, .professional-p, .minimal-p,
+  .creative-list-item, .modern-list-item, .modern-sublist-item, .modern-li,
+  .professional-skill-item, .professional-responsibility-item,
+  .professional-project-desc, .professional-cert-issuer,
+  .professional-language-item, .professional-reference-position {
+    font-size: 10pt !important;
+    line-height: 1.2;
+    margin-bottom: 0.05in !important;
+  }
+  .creative-text-sm, .modern-text-sm, .professional-text-sm {
+    font-size: 9pt !important;
+  }
+  .creative-text-xs, .modern-text-xs, .professional-text-xs {
+    font-size: 8pt !important;
+  }
+
+  /* Specific section adjustments for print */
+  .creative-section, .modern-sidebar, .modern-main, .professional-section {
+    padding: 0.25in !important; /* Reduced padding for print */
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border: none !important; /* Remove borders from sections */
+  }
+
+  /* Ensure elements break appropriately across pages */
+  section {
     page-break-inside: avoid;
   }
-
-  .professional-section {
+  .creative-exp-header, .modern-flex-between, .professional-flex-between {
     page-break-inside: avoid;
+    display: flex; /* Keep flex for layout */
+    flex-wrap: nowrap; /* Prevent wrapping for tighter layout on print */
+    justify-content: space-between;
+    align-items: baseline; /* Align text baselines */
   }
 
-  .professional-header {
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+  .creative-projects-grid, .modern-grid, .professional-references-grid, .professional-skills-list {
+    display: block; /* Stack grid items for print to ensure proper flow */
+    gap: 0 !important; /* Remove gaps */
   }
 
-  .professional-h1-name { font-size: 18pt; }
-  .professional-h2 { font-size: 14pt; }
-  .professional-h3 { font-size: 12pt; }
-
-  .professional-p,
-  .professional-responsibility-item,
-  .professional-skill-item,
-  .professional-project-desc {
-    font-size: 10pt;
+  .creative-project-card, .modern-cert-card, .professional-reference-item {
+    margin-bottom: 0.1in !important; /* Spacing between stacked items */
+    padding: 0 !important; /* Remove padding */
+    border: none !important; /* Remove borders */
+    background-color: transparent !important;
+    box-shadow: none !important;
   }
 
-  .professional-date,
-  .professional-location,
-  .professional-grade,
-  .professional-project-tech {
-    font-size: 9pt;
+  .creative-tags-container, .professional-languages-list {
+    display: block; /* Stack tags/languages */
+    gap: 0 !important;
+  }
+  .creative-tag, .creative-tag1 {
+    display: inline-block; /* Keep them inline but wrap */
+    background-color: #eee !important; /* Light background for tags */
+    color: #333 !important; /* Darker text for tags */
+    padding: 2px 5px !important;
+    margin-right: 5px !important;
+    margin-bottom: 3px !important;
+    border-radius: 3px !important;
+    font-size: 9pt !important;
   }
 
+  /* Links in print: display href */
   a {
     text-decoration: none;
     color: #000 !important;
   }
 
-  .professional-link::after,
-  .professional-project-link::after {
+  a::after {
     content: " (" attr(href) ")";
     font-size: 0.8em;
     font-weight: normal;
     color: #666;
+  }
+
+  /* Profile Image for Modern Template */
+  .modern-profile-img-container {
+    display: block !important; /* Ensure it's a block for print flow */
+    text-align: center; /* Center image */
+    margin-bottom: 0.25in !important;
+  }
+  .modern-profile-img {
+    width: 1.2in !important; /* Set a specific print size */
+    height: 1.2in !important;
+    border: 1px solid #ccc !important; /* Lighter border for print */
+    margin: 0 auto; /* Center image horizontally */
+  }
+
+  /* Adjust line heights for better readability on print */
+  .modern-ul, .professional-responsibilities {
+    line-height: 1.2;
   }
 }
 /* Add these to your existing CSS */

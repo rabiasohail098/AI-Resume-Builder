@@ -341,13 +341,12 @@ const handleImageUpload = (e) => {
                   className="form-textarea"
                   rows={3}
                 />
-                <div className={`${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
                 <AgentHelper
                   field="Skills"
                   context={form.skills}
                   onResult={(text) => setForm({ ...form, skills: text })}
                   />
-                  </div>
+                
               </section>
 
               {/* Experience */}

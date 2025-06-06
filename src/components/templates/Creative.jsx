@@ -1,4 +1,12 @@
+"use client"
+import { useState } from "react";
 export default function CreativeTemplate({ data = {} }) {
+  const [showSkills, setShowSkills] = useState(true); 
+
+
+  const toggleSkills = () => {
+    setShowSkills(!showSkills); // Set showSkills to its opposite value
+  };
   // Safely destructure with defaults
   const {
     form = {},
@@ -23,13 +31,19 @@ export default function CreativeTemplate({ data = {} }) {
 
   return (
     <div className="creative-template" data-theme="light">
+     
+
       <div className="text-3xl gap-3 font-bold creative-text-primary">
-        <h1 className="text-5xl underline text-center">{form.fullName.slice(0,1).toUpperCase()+form.fullName.slice(1).toLowerCase()}</h1>
+        <h1 className="text-5xl text-[#26ad3a] underline text-center">
+          {form.fullName.slice(0,1).toUpperCase()+form.fullName.slice(1).toLowerCase()}
+        </h1>
         <div>
           {experience.map((exp, index) => (
             <div key={index} className="mb-6">
               <div className="mb-1">
-                <h1 className="text-4xl underline text-center">{exp.jobTitle || ' '}</h1>
+                <h1 className="text-4xl text-[#26ad3a] underline text-center">
+                  {exp.jobTitle || ' '}
+                </h1>
               </div>
             </div>
           ))}
@@ -38,7 +52,6 @@ export default function CreativeTemplate({ data = {} }) {
 
       {/* Header */}
       <header className="creative-header">
-       
         <div className="creative-contact-container">
           {email && <span className="creative-text-secondary">{email}</span>}
           {phone && <span className="creative-text-secondary">• {phone}</span>}
@@ -58,16 +71,15 @@ export default function CreativeTemplate({ data = {} }) {
       <div className="creative-main-grid">
         {/* Left Column */}
         <div className="creative-left-column">
-          
           {/* Summary */}
           {summary && (
             <section className="creative-section">
-              <h2 className="creative-h2">Summary</h2>
+              <h2 className="creative-h2 creative-border-bottom">Summary</h2>
               <p className="creative-p">{summary}</p>
             </section>
           )}
 
-          {/* Experience */}
+             {/* Experience */}
           {experience?.length > 0 && experience[0]?.jobTitle && (
             <section className="creative-section">
               <h2 className="creative-h2 creative-border-bottom">EXPERIENCE</h2>
@@ -95,6 +107,7 @@ export default function CreativeTemplate({ data = {} }) {
               ))}
             </section>
           )}
+       
 
           {/* Projects */}
           {projects?.length > 0 && projects[0]?.title && (
@@ -132,19 +145,7 @@ export default function CreativeTemplate({ data = {} }) {
 
         {/* Right Column */}
         <div className="creative-right-column">
-          {/* Skills */}
-          {skills && (
-            <section className="creative-section">
-              <h2 className="creative-h2">SKILLS</h2>
-              <div className="creative-tags-container">
-                {skills.split(',').map((skill, index) => (
-                  <span key={index} className="creative-tag1">
-                    {skill.trim()}
-                  </span>
-                ))}
-              </div>
-            </section>
-          )}
+          
 
           {/* Education */}
           {education?.length > 0 && education[0]?.degree && (
@@ -161,6 +162,29 @@ export default function CreativeTemplate({ data = {} }) {
                 </div>
               ))}
             </section>
+          )}
+                        <button 
+          onClick={toggleSkills}
+          className="px-3 py-1 w-34 bg-[#2563eb] text-white rounded-md hover:bg-[#1547b3] transition-colors mb-4" // Added some styling for better visibility
+        >
+          {showSkills ? 'Hide Skills' : 'Show Skills'}
+        </button>
+{/* Skills section (now on right side with toggle) */}
+          {showSkills && skills && (
+            <div>
+       
+            <section className="creative-section">
+       
+              <h2 className="creative-h2">SKILLS</h2>
+              <div className="creative-tags-container">
+                {skills.split(',').map((skill, index) => (
+                  <span key={index} className="creative-tag1">
+                    {skill.trim()}
+                  </span>
+                ))}
+              </div>
+              </section>
+              </div>
           )}
 
           {/* Certifications */}
