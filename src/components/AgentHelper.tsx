@@ -1,5 +1,5 @@
 "use client";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 
 type AgentHelperProps = {
     field: string;
@@ -26,7 +26,7 @@ export default function AgentHelper({ field, context = "", onResult }: AgentHelp
             if (data?.suggestion) {
                 setSuggestion(data.suggestion);
                 onResult?.(data.suggestion);
-                }else {
+            } else {
                 setSuggestion("✖️ No suggestion available");
             }
         } catch (error) {
@@ -35,31 +35,21 @@ export default function AgentHelper({ field, context = "", onResult }: AgentHelp
         }
         setLoading(false);
     };
-      const [theme, setTheme] = useState('light')
-    useEffect(() => {
-      const savedTheme = localStorage.getItem('resumeTheme') || 'light';
-      setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    }, []);
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('resumeTheme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-  };
+
     return (
         <div className="mt-2">
             <button
                 onClick={handleGetSuggestion}
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
                 disabled={loading}
-            >{loading ? "Thinking..." : "💡 Suggest Answer"}
+            >
+                {loading ? "Thinking..." : "💡 Suggest Answer"}
             </button>
             {suggestion && (
-                <div className={`${theme === "dark" ? 'form-textarea' :''}`}>
+                <div className="mt-2 p-2 border rounded bg-gray-100 text-black dark:bg-gray-800">
                     {suggestion}
                 </div>
             )}
-                </div>
+        </div>
     )
-        }
+}
